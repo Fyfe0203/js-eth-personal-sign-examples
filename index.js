@@ -20,7 +20,7 @@ function connect () {
 ethSignButton.addEventListener('click', function(event) {
   event.preventDefault()
   var msgHash = ethUtil.keccak256('An amazing message, for use with MetaMask!')
-  var from = web3.eth.accounts[0]
+  var from = web3.currentProvider.selectedAddress
   if (!from) return connect()
   web3.eth.sign(from, msgHash, function (err, result) {
     if (err) return console.error(err)
@@ -34,7 +34,7 @@ personalSignButton.addEventListener('click', function(event) {
   var msg = ethUtil.bufferToHex(new Buffer(text, 'utf8'))
   // var msg = '0x1' // hexEncode(text)
   console.log(msg)
-  var from = web3.eth.accounts[0]
+  var from = web3.currentProvider.selectedAddress
   if (!from) return connect()
 
   /*  web3.personal.sign not yet implemented!!!
@@ -107,7 +107,7 @@ personalRecoverTest.addEventListener('click', function(event) {
   var msg = ethUtil.bufferToHex(new Buffer(text, 'utf8'))
   // var msg = '0x1' // hexEncode(text)
   console.log(msg)
-  var from = web3.eth.accounts[0]
+  var from =web3.currentProvider.selectedAddress
   if (!from) return connect()
 
   /*  web3.personal.sign not yet implemented!!!
@@ -165,7 +165,7 @@ ethjsPersonalSignButton.addEventListener('click', function(event) {
   event.preventDefault()
   var text = terms
   var msg = ethUtil.bufferToHex(new Buffer(text, 'utf8'))
-  var from = web3.eth.accounts[0]
+  var from = web3.currentProvider.selectedAddress
   if (!from) return connect()
 
   console.log('CLICKED, SENDING PERSONAL SIGN REQ')
@@ -209,7 +209,7 @@ signTypedDataButton.addEventListener('click', function(event) {
     }
   ]
 
-  var from = web3.eth.accounts[0]
+  var from = web3.currentProvider.selectedAddress
   if (!from) return connect()
 
   /*  web3.eth.signTypedData not yet implemented!!!
@@ -286,7 +286,7 @@ signTypedDataV3Button.addEventListener('click', function(event) {
   
       
   
-    var from = web3.eth.accounts[0]
+    var from = web3.currentProvider.selectedAddress
   
     console.log('CLICKED, SENDING PERSONAL SIGN REQ', 'from', from, msgParams)
     var params = [from, msgParams]
@@ -367,7 +367,7 @@ signTypedDataV4Button.addEventListener('click', function(event) {
     }
   });
 
-  var from = web3.eth.accounts[0]
+  var from = web3.currentProvider.selectedAddress
 
   var params = [from, msgParams]
   var method = 'eth_signTypedData_v4'
@@ -412,7 +412,7 @@ ethjsSignTypedDataButton.addEventListener('click', function(event) {
     }
   ]
 
-  var from = web3.eth.accounts[0]
+  var from = web3.currentProvider.selectedAddress
   if (!from) return connect()
 
   console.log('CLICKED, SENDING PERSONAL SIGN REQ')
